@@ -32,31 +32,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     // Tween animation.
     animation = ColorTween(
-      begin: Colors.blueGrey,
+      begin: Colors.redAccent,
       end: Colors.white,
     ).animate(controller);
 
-    // CurvedAnimation
-    // animation = CurvedAnimation(parent: controller, curve: Curves.easeIn);
 
     controller.forward();
 
-    // 반복함
-    // animation.addStatusListener((status) {
-    //   if (status == AnimationStatus.completed) {
-    //     controller.reverse(from: 1.0);
-    //   } else if (status == AnimationStatus.dismissed) {
-    //     controller.forward();
-    //   }
-    // });
 
-    // addListener()가 뭐야?
+    // when value of animation change, it will change.
     controller.addListener(() {
-      setState(() {}); // 매순간 변화
+      setState(() {}); //
     });
   }
 
-  // dispose() ???
+  // dispose animationcontroller.
   @override
   void dispose() {
     controller.dispose();
@@ -67,8 +57,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       // Scaffold: 앱 화면의 기본 뼈대
-      // backgroundColor: Colors.red.withOpacity(controller.value), // withOpacity: 투명도 조절
-      // backgroundColor: Colors.white, // withOpacity: 투명도 조절
       backgroundColor: animation.value,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
@@ -82,7 +70,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                 Hero(
                   tag: 'logo', // need to give same 'tag'
                   child: Container(
-                    child: Image.asset('images/logo.png'),
+                    child: Image.asset('images/tree_logo1.png'),
                     // height: animation.value *100,
                     height: 60.0,
                   ),
@@ -101,7 +89,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     totalRepeatCount: 1, // 반복 횟수
                     animatedTexts: [
                       TypewriterAnimatedText(
-                        'Flash Chat',
+                        'Grow Chat',
                         speed: Duration(milliseconds: 200), // speed.
                       ),
                     ],
